@@ -1,4 +1,6 @@
 console.log("server is running!");
+var express = require('express');
+var app = express();
 var http = require("http");
 var fs = require("fs");
 var url = require("url");
@@ -6,12 +8,14 @@ var users = require("./users");
 var requests = require("./requests");
 var approvedRequests = require("./approvedRequests");
 var querystring = require("querystring");
-
+  
 
 http.createServer(function(request, response){
+  console.log('request.read is: ' + request.read);
 
   var path = url.parse(request.url).pathname;
   var queryStr = url.parse(request.url).query;
+  console.log(path);
 
   runQuery(path, queryStr);
 
@@ -41,28 +45,26 @@ http.createServer(function(request, response){
 
 
 function runQuery(path, qs){ 
+  console.log('runQuery path: ' + path + " and querystring: " + qs);
 
   if(!qs){
     return;
   }
  
   var query = querystring.parse(qs);
-  console.log("this is the query: ", query);
+  console.log('the querystring in runQuery:' + querystring);
 
-  //take the appropriate parameters from the queryString and do the appropriate things
   if(query.name){
     
     users.setUser(query.name);
-    console.log("This is a setUser deal.");
 
   } else if(query.month){
  
     requests.setRequest(query.month, query.day, query.personID);   
-    console.log("This is a setRequest deal.");
 
   } else if(query.requestID){
     
-    console.log("This is a setApproval deal.");
+    approvedRequests.getApprovedRequests();
   
   }
 
@@ -73,8 +75,16 @@ function getBody(path, callback){
 
   var body;
   var err;
-
-  if(path === '/getUsers'){
+  
+  if(path === "/"){
+  
+    body = fs.readFileSync(__dirname + '/index.html'); 
+  
+  } else if(path === "/style.css") {
+  
+    body = fs.readFileSync(__dirname + '/style.css');
+  
+  } else if(path === '/getUsers'){
     
     body = users.getUsers();
   

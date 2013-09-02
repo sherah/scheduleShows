@@ -1,0 +1,44 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      
+       document.addEventListener("DOMContentLoaded", function(){
+        console.log("ready.");
+      });
+    
+    </script>
+  </head>
+
+  <body>
+    <div id="main">
+
+      <h1>Schedule Shows.</h1>
+
+      <p>click a thing to get started.</p>
+
+      <div class="mainOption seeUsers">
+        <h2><a href="/getUsers">See users.</a></h2>
+      </div>
+
+      <div class="mainOption addUser">
+        <h2>Add a user.</h2>
+        <form method="POST" action="/setUser">
+          <input type="text" name="name" placeholder="user name.">
+          <button class="submitUser">Add</button>
+        </form>
+      </div>
+
+      <div class="mainOption makeRequest">
+        <h2>Make a show request.</h2>
+      </div>
+
+      <div class="mainOption seeApprovedRequests">
+        <h2>See current schedule.</h2>
+      </div>
+
+    </div>
+  </body>
+
+</html>

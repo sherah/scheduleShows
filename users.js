@@ -23,7 +23,7 @@ exports.getUsers = function getUsers(){
 
 
 exports.setUser = function setUser(name){
-
+  console.log("the name passed over is: " + name);
   //set the id to be the next available number
   fs.readFile(userFile, function(err, data){
 
