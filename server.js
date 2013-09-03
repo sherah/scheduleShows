@@ -11,48 +11,49 @@ var querystring = require("querystring");
   
 
 http.createServer(function(request, response){
-  console.log('request.read is: ' + request.read);
 
   var path = url.parse(request.url).pathname;
   var queryStr = url.parse(request.url).query;
-  console.log(path);
 
-  runQuery(path, queryStr);
 
-  getBody(path, function(err, body){
-  
-    if(err){
-      response.writeHead(500, {
-        'Content-Length': err.length,
+  if(request.method === 'GET'){
+    getBody(path, function(err, body){
+    
+      if(err){
+        response.writeHead(500, {
+          'Content-Length': err.length,
+          'Content-Type': 'text/html'
+        });
+
+        response.end(err);
+        return;
+      }
+
+      response.writeHead(200, {
+        'Content-Length': body.length,
         'Content-Type': 'text/html'
       });
 
-      response.end(err);
-      return;
-    }
-
-    response.writeHead(200, {
-      'Content-Length': body.length,
-      'Content-Type': 'text/html'
+      response.end(body);
+    
     });
+  } else if(request.method === 'POST'){
 
-    response.end(body);
-  
-  });
+    runQuery(path, queryStr);
+
+  } 
 
 
 }).listen(5000);
 
 
 function runQuery(path, qs){ 
-  console.log('runQuery path: ' + path + " and querystring: " + qs);
 
   if(!qs){
     return;
   }
  
   var query = querystring.parse(qs);
-  console.log('the querystring in runQuery:' + querystring);
 
   if(query.name){
     

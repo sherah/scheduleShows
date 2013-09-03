@@ -32,10 +32,23 @@
 
       <div class="mainOption makeRequest">
         <h2>Make a show request.</h2>
+        <form method="POST" action="setRequest">
+          <input type="text" name="month" placeholder="month">
+          <input type="text" name="day" placeholder="day">
+          <button class="submitRequest">Submit</button>
+        </form>
       </div>
 
       <div class="mainOption seeApprovedRequests">
         <h2>See current schedule.</h2>
+      </div>
+
+      <div class="adminOption seePendingRequests">
+        <h2>See pending requests.</h2>
+      </div>
+
+      <div class="adminOption approveRequest">
+        <h2>Approve a request.</h2>
       </div>
 
     </div>
