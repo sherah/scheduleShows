@@ -22,9 +22,17 @@
         <h2><a href="/getUsers">See users.</a></h2>
       </div>
 
+      <div class="mainOption seeOneUser">
+        <h2>See a specific user.</h2>
+        <form method="GET" action="/getUser">
+          <input type="text" name="userID" placeholder="user's user ID">
+          <input type="submit" class="submitUserID">
+        </form>
+      </div>
+
       <div class="mainOption addUser">
         <h2>Add a user.</h2>
-        <form method="POST" action="/setUser">
+        <form method="GET" action="/setUser">
           <input type="text" name="name" placeholder="user name.">
           <button class="submitUser">Add</button>
         </form>
@@ -40,7 +48,7 @@
       </div>
 
       <div class="mainOption seeApprovedRequests">
-        <h2>See current schedule.</h2>
+        <h2><a href="/getApprovedRequests">See current schedule.</a></h2>
       </div>
 
       <div class="adminOption seePendingRequests">

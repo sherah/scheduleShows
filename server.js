@@ -15,34 +15,29 @@ http.createServer(function(request, response){
   var path = url.parse(request.url).pathname;
   var queryStr = url.parse(request.url).query;
 
+  runQuery(path, queryStr);
 
-  if(request.method === 'GET'){
-    getBody(path, function(err, body){
-    
-      if(err){
-        response.writeHead(500, {
-          'Content-Length': err.length,
-          'Content-Type': 'text/html'
-        });
-
-        response.end(err);
-        return;
-      }
-
-      response.writeHead(200, {
-        'Content-Length': body.length,
+  getBody(path, function(err, body){
+  
+    if(err){
+      response.writeHead(500, {
+        'Content-Length': err.length,
         'Content-Type': 'text/html'
       });
 
-      response.end(body);
-    
+      response.end(err);
+      return;
+    }
+
+    response.writeHead(200, {
+      'Content-Length': body.length,
+      'Content-Type': 'text/html'
     });
-  } else if(request.method === 'POST'){
 
-    runQuery(path, queryStr);
-
-  } 
-
+    response.end(body);
+  
+  });
+  
 
 }).listen(5000);
 
@@ -54,11 +49,16 @@ function runQuery(path, qs){
   }
  
   var query = querystring.parse(qs);
+  console.log('the query: ' + query);
 
   if(query.name){
-    
+    console.log('it get to the runQuery conditional.'); 
     users.setUser(query.name);
 
+  } else if(query.userID){
+    console.log("the userID is: " + query.userID); 
+    users.getUser(query.userID);
+  
   } else if(query.month){
  
     requests.setRequest(query.month, query.day, query.personID);   
@@ -88,6 +88,10 @@ function getBody(path, callback){
   } else if(path === '/getUsers'){
     
     body = users.getUsers();
+  
+  } else if(path === '/getUser'){
+    
+    body = "this will return the user that was specified";
   
   } else if(path === '/setUser') {
   

@@ -3,15 +3,14 @@ var userFile = (__dirname + "/users.txt");
 
 exports.getUser = function getUser(id){
 
-  fs.readFile((__dirname + "/users.txt"), function(err, data){
-  
-    var users = data.split("\n");
+  var data = fs.readFileSync(userFile);
+    
+  var users = data.split("\n");
 
-    var index = id;
+  var index = id;
+  console.log('the returned user will be: ' + users[index]);
 
-    return users[index];
-
-  });  
+  return users[index];
 
 };
 
