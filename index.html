@@ -40,9 +40,10 @@
 
       <div class="mainOption makeRequest">
         <h2>Make a show request.</h2>
-        <form method="POST" action="setRequest">
+        <form method="GET" action="setRequest">
           <input type="text" name="month" placeholder="month">
           <input type="text" name="day" placeholder="day">
+          <input type="text" name="personID" placeholder="person's ID">
           <button class="submitRequest">Submit</button>
         </form>
       </div>
@@ -52,7 +53,7 @@
       </div>
 
       <div class="adminOption seePendingRequests">
-        <h2>See pending requests.</h2>
+        <h2><a href="/getRequests">See pending requests.</a></h2>
       </div>
 
       <div class="adminOption approveRequest">

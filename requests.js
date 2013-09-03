@@ -10,26 +10,21 @@ exports.getRequests = function getRequests(){
 
 exports.setRequest = function setRequest(month, day, personID){
  
-  //set the id to be the next available number
-  fs.readFile(requestsFile, function(err, data){
-  
-    var id = data.toString().split(' ').length;
-  
-    var body = ("\n" + id + "," + month + "," + day + ',' + personID + "," + 'unapproved');
+  var data = fs.readFileSync(requestsFile);
+ 
+  var id = data.toString().split('\n').length;
 
-    //append this user to the request file.
-    fs.appendFile(requestsFile, body, function(err){
-    
-      if(err){
-        console.log(err);
-      } else {
-        console.log("the request for person #" + personID + " on " + month + "/" + day + " was added with an id of " + id);
-      }
-    
-    });
+  var body = ("\n" + id + "," + month + "," + day + ',' + personID + "," + 'unapproved');
 
+  //append this user to the request file.
+  fs.appendFile(requestsFile, body, function(err){
+  
+    if(err){
+      console.log(err);
+    } else {
+      console.log("the request for person #" + personID + " on " + month + "/" + day + " was added with an id of " + id);
+    }
+  
   });
-  
-
 
 }

@@ -5,9 +5,9 @@ exports.getUser = function getUser(id){
 
   var data = fs.readFileSync(userFile);
     
-  var users = data.split("\n");
+  var users = data.toString().split("\n");
 
-  var index = id;
+  var index = id-1;
   console.log('the returned user will be: ' + users[index]);
 
   return users[index];
