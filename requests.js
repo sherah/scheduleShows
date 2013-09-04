@@ -14,7 +14,7 @@ exports.setRequest = function setRequest(month, day, personID){
  
   var id = data.toString().split('\n').length;
 
-  var body = ("\n" + id + "," + month + "," + day + ',' + personID + "," + 'unapproved');
+  var body = ( id + "," + month + "," + day + ',' + personID + "," + 'unapproved' + '\n');
 
   //append this user to the request file.
   fs.appendFile(requestsFile, body, function(err){

@@ -33,24 +33,33 @@ exports.getApprovedRequests = function getApprovedRequests(){
 
 
 exports.setApprovedRequest = function setApprovedRequest(id){
+  
+  id = (parseInt(id)+1);
 
   //split the file out.
   var requests = fs.readFileSync(requestsFile, 'utf-8');
   requests = requests.split("\n");
 
-  changingRecord = requests[id];
-  console.log('the changing record is: ' + changingRecord);
-  changingRecord = changingRecord.split(',');
-  changingRecord = changingRecord.slice(0, -1);
+  var changingRecord = requests[id];
+  var changingRecordArray = changingRecord.split(',');
+  //changingRecord = changingRecord.slice(0, -1);
 
-  console.log('changingRecord is now: ' + changingRecord); 
-  changingRecord += ",approved";
-
-  requests[id] = changingRecord;
+  changingRecordArray[changingRecordArray.length - 1] = "approved";
+  //  changingRecord += ",approved";
+  var newRecord = changingRecord.join(',');
+  
+  requests[id] = newRecord; 
   console.log('the new line should read: ' + requests[id]);
 
-  console.log('the whole file to write: ' + requests.toString());
-  fs.writeFileSync(requestsFile, requests.toString());
+  requests.forEach(function(el, i){
+  
+    console.log('the element is: ' + el);
+    el = el + "\n"; 
+    
+  });
+  requests.join(',');
+  console.log('the whole file to write: ' + requests);
+  fs.writeFileSync(requestsFile, requests);
 
   return requests.toString(); 
 }
