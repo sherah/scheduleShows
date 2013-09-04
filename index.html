@@ -40,7 +40,7 @@
 
       <div class="mainOption makeRequest">
         <h2>Make a show request.</h2>
-        <form method="GET" action="setRequest">
+        <form method="GET" action="/setRequest">
           <input type="text" name="month" placeholder="month">
           <input type="text" name="day" placeholder="day">
           <input type="text" name="personID" placeholder="person's ID">
@@ -50,6 +50,7 @@
 
       <div class="mainOption seeApprovedRequests">
         <h2><a href="/getApprovedRequests">See current schedule.</a></h2>
+        <p>Shows approved requests.</p>
       </div>
 
       <div class="adminOption seePendingRequests">
@@ -58,6 +59,11 @@
 
       <div class="adminOption approveRequest">
         <h2>Approve a request.</h2>
+        <p>Until Sherah makes this interface not suck, click "See pending requests" to get the request ID for the request you want to approve. Then come back here and enter it in. Yep it sucks.</p>
+        <form method="GET" action="/setApprovedRequest">
+          <input type="text" name="requestID" placeholder="request ID">
+          <button class="submitRequestApproval">Approve</button>
+        </form>
       </div>
 
     </div>

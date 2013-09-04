@@ -30,7 +30,7 @@ button{
   margin: 10px auto;
   padding:10px;
   background-color: pink;
-  height: 100px;
+  min-height: 100px;
 }
 
 .adminOption{
@@ -38,5 +38,5 @@ button{
   margin: 10px auto;
   padding:10px;
   background-color: #b0f0f0;
-  height: 100px;
+  min-height: 100px;
 }

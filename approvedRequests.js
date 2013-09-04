@@ -5,7 +5,11 @@ var approvedFile = (__dirname + '/approvedRequests.txt');
 exports.getApprovedRequests = function getApprovedRequests(){
 
   var requests = fs.readFileSync(requestsFile, 'utf-8');
-  requests = requests.split("\n");
+  if(requests){
+    requests = requests.split("\n");
+  } else {
+    return "there are no requests."
+  }
 
   var approvedRequests;
 
@@ -19,7 +23,12 @@ exports.getApprovedRequests = function getApprovedRequests(){
   
   });
  
-  return approvedRequests.toString();
+  if(approvedRequests){
+    return approvedRequests.toString();
+  } else {
+    return "There are no approved requests."
+  }
+
 }
 
 
@@ -30,11 +39,18 @@ exports.setApprovedRequest = function setApprovedRequest(id){
   requests = requests.split("\n");
 
   changingRecord = requests[id];
-  changingRecord.split(',');
-  changingRecord.slice(0, -1);
-  changingRecord.push("approved");
+  console.log('the changing record is: ' + changingRecord);
+  changingRecord = changingRecord.split(',');
+  changingRecord = changingRecord.slice(0, -1);
+
+  console.log('changingRecord is now: ' + changingRecord); 
+  changingRecord += ",approved";
 
   requests[id] = changingRecord;
+  console.log('the new line should read: ' + requests[id]);
+
+  console.log('the whole file to write: ' + requests.toString());
+  fs.writeFileSync(requestsFile, requests.toString());
 
   return requests.toString(); 
 }

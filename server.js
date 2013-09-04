@@ -65,7 +65,7 @@ function runQuery(path, qs){
 
   } else if(query.requestID){
     
-    approvedRequests.getApprovedRequests();
+    approvedRequests.setApprovedRequest(query.requestID);
   
   }
 
