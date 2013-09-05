@@ -42,11 +42,10 @@ exports.setApprovedRequest = function setApprovedRequest(id){
 
   var changingRecord = requests[id];
   var changingRecordArray = changingRecord.split(',');
-  //changingRecord = changingRecord.slice(0, -1);
 
   changingRecordArray[changingRecordArray.length - 1] = "approved";
-  //  changingRecord += ",approved";
-  var newRecord = changingRecord.join(',');
+
+  var newRecord = changingRecordArray.join(',');
   
   requests[id] = newRecord; 
   console.log('the new line should read: ' + requests[id]);
@@ -57,9 +56,9 @@ exports.setApprovedRequest = function setApprovedRequest(id){
     el = el + "\n"; 
     
   });
-  requests.join(',');
-  console.log('the whole file to write: ' + requests);
-  fs.writeFileSync(requestsFile, requests);
+  var newRequests = requests.join('\n');
+  console.log('the whole file to write: ' + newRequests);
+  fs.writeFileSync(requestsFile, newRequests);
 
-  return requests.toString(); 
+  return newRequests.toString(); 
 }
