@@ -11,13 +11,13 @@ exports.getApprovedRequests = function getApprovedRequests(){
     return "there are no requests."
   }
 
-  var approvedRequests;
+  var approvedRequests = [];
 
   requests.forEach(function(el, i, arr){
  
     var record = el.split(',');
     
-    if(record.pop() === 'approved'){
+    if(record[record.length-1] === 'approved'){
       approvedRequests.push(el);
     } 
   
