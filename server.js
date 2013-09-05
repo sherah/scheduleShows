@@ -1,4 +1,3 @@
-console.log("server is running!");
 var express = require('express');
 var app = express();
 var http = require("http");
@@ -49,22 +48,17 @@ function runQuery(path, qs){
   }
  
   var query = querystring.parse(qs);
-  console.log('the query: ' + query);
 
   if(query.name){
-    console.log('it get to the runQuery conditional.'); 
     users.setUser(query.name);
 
   } else if(query.userID){
-    console.log("the userID is: " + query.userID); 
     users.getUser(query.userID);
   
   } else if(query.month){
- 
     requests.setRequest(query.month, query.day, query.personID);   
 
   } else if(query.requestID){
-    
     approvedRequests.setApprovedRequest(query.requestID);
   
   }

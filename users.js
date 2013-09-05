@@ -8,7 +8,6 @@ exports.getUser = function getUser(id){
   var users = data.toString().split("\n");
 
   var index = id-1;
-  console.log('the returned user will be: ' + users[index]);
 
   return users[index];
 
@@ -22,14 +21,13 @@ exports.getUsers = function getUsers(){
 
 
 exports.setUser = function setUser(name){
-  console.log("the name passed over is: " + name);
+
   //set the id to be the next available number
   fs.readFile(userFile, function(err, data){
 
     data = data.toString();
     var users = data.split("\n");
 
-    console.log('the users length is: ' + users.length);
     var id = users.length;
   
     var body = (id + "," + name + "\n");
