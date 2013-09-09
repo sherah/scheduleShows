@@ -10,7 +10,7 @@ var querystring = require("querystring");
 var fileHandler = require("./fileHandler");
 
 console.log(fileHandler.fileHandler.readTableRecordData('users', 2));
-console.log(fileHandler.fileHandler.writeRecord('users', 2, '{\n"name": "Joshua"\n}'));
+console.log(fileHandler.fileHandler.writeRecord('users', 3, '{\n"name": "Randy"\n}'));
 
 http.createServer(function(request, response){
 

@@ -23,12 +23,7 @@ exports.fileHandler = {
   },
 
   writeRecord: function(table, id, data){
-    //if the id exists, replace the record with the data
-    if(this.readTableRecordData(table, id)){
-      var file = ("data/" + table + '/' + id + ".json");
-      fs.writeFileSync(file, data);
-    } else {
-    //otherwise add this record
-    }
+    var file = ("data/" + table + '/' + id + ".json");
+    fs.writeFileSync(file, data);
   }
 }
