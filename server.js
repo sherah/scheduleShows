@@ -9,6 +9,7 @@ var approvedRequests = require("./approvedRequests");
 var querystring = require("querystring");
 var fileHandler = require("./fileHandler");
 
+console.log(fileHandler.fileHandler.readTableRecordData('users', 2));
 
 http.createServer(function(request, response){
 
