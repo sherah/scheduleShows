@@ -7,7 +7,8 @@ var users = require("./users");
 var requests = require("./requests");
 var approvedRequests = require("./approvedRequests");
 var querystring = require("querystring");
-  
+var fileHandler = require("./fileHandler");
+
 
 http.createServer(function(request, response){
 

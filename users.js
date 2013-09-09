@@ -1,6 +1,7 @@
 var fs = require("fs");
 var userFile = (__dirname + "/users.txt");
 
+
 exports.getUser = function getUser(id){
 
   var data = fs.readFileSync(userFile);
