@@ -1,5 +1,18 @@
 var fs = require('fs');
 
+exports.readAllData = function(){
+  var tables = fs.readdirSync("data/");
+  var returndata = {}; 
+  var table = {};
+
+  tables.forEach(function(el,i){
+    table.table = el;
+    table.data = ((exports.readTableData(el)).toString());
+    returndata.data = table;
+  });
+
+  return returndata; 
+};
 
 exports.readTableRecordData = function(table, id){
   var file = ("data/" + table + '/' + id + ".json");

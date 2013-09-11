@@ -9,10 +9,6 @@ var approvedRequests = require("./approvedRequests");
 var querystring = require("querystring");
 var filehandler = require("./filehandler");
 
-console.log(filehandler.readTableRecordData('users', 2));
-console.log(filehandler.readTableData('users'));
-console.log(filehandler.writeRecord('users', 3, '{\n"name": "Randy"\n}'));
-
 http.createServer(function(request, response){
 
   var path = url.parse(request.url).pathname;
