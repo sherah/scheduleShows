@@ -7,11 +7,11 @@ var users = require("./users");
 var requests = require("./requests");
 var approvedRequests = require("./approvedRequests");
 var querystring = require("querystring");
-var fileHandler = require("./fileHandler");
+var filehandler = require("./filehandler");
 
-console.log(fileHandler.fileHandler.readTableRecordData('users', 2));
-console.log(fileHandler.fileHandler.readTableData('users'));
-console.log(fileHandler.fileHandler.writeRecord('users', 3, '{\n"name": "Randy"\n}'));
+console.log(filehandler.readTableRecordData('users', 2));
+console.log(filehandler.readTableData('users'));
+console.log(filehandler.writeRecord('users', 3, '{\n"name": "Randy"\n}'));
 
 http.createServer(function(request, response){
 
