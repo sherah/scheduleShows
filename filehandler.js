@@ -13,13 +13,13 @@ exports.fileHandler = {
     var filesArray = fs.readdirSync(directory);
     var dataArray = [];
 
-    filesArray.forEach(function(el){
-      
+    filesArray.forEach(function(el, i){
+      console.log("iteration " + i); 
       dataArray.push(fs.readFileSync((directory+el), 'utf-8'));  
     
     }); 
 
-    return dataArray;
+    return 'this is the array: ' + dataArray;
   },
 
   writeRecord: function(table, id, data){
