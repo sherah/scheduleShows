@@ -8,6 +8,9 @@ var requests = require("./requests");
 var approvedRequests = require("./approvedRequests");
 var querystring = require("querystring");
 var filehandler = require("./filehandler");
+var dataModel = require("./dataModel");
+
+console.log(dataModel.createDatabase());
 
 http.createServer(function(request, response){
 
