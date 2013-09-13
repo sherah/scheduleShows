@@ -6,6 +6,11 @@ exports.createDatabase = function(){
 
   var allData = (filehandler.readAllData()); 
 
+  //now transform this data into objects with which the app can more easily work
+  var tables = allData.data.tables;
+
+
+
   return allData;
 };
 

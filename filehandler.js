@@ -6,10 +6,16 @@ exports.readAllData = function(){
   var table = {};
 
   tables.forEach(function(el,i){
-    table['table' + i] = el;
-    table['tableData' + i] = ((exports.readTableData(el)).toString());
+    table[el] = {};
     returndata.data = table;
   });
+
+  for(j in returndata.data){
+    
+    table[j] = ((exports.readTableData(j)).toString());
+  
+  };
+
   return returndata; 
 };
 

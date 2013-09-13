@@ -10,7 +10,7 @@ var querystring = require("querystring");
 var filehandler = require("./filehandler");
 var dataModel = require("./dataModel");
 
-console.log(dataModel.createDatabase());
+console.log(filehandler.readAllData());
 
 http.createServer(function(request, response){
 
